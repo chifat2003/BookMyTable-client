@@ -1,0 +1,420 @@
+{
+  "restaurants": [
+    {
+      "id": "1",
+      "name": "La Bella Italia",
+      "cuisine": "Italian",
+      "location": "Manhattan, NY",
+      "address": "123 5th Avenue, Manhattan, NY 10016",
+      "rating": 4.8,
+      "reviewCount": 342,
+      "priceRange": "$$$",
+      "phone": "+1 (212) 555-0101",
+      "email": "info@labellaItalia.com",
+      "website": "www.labellaItalia.com",
+      "description": "Authentic Italian cuisine with a modern twist. Our chefs bring traditional recipes from Southern Italy with fresh, locally-sourced ingredients.",
+      "image": "/globe.svg",
+      "tags": ["Italian", "Fine Dining", "Romantic", "Wine Bar"],
+      "capacity": 120,
+      "parkingAvailable": true,
+      "reservationRequired": true,
+      "openNow": true,
+      "hours": [
+        { "day": "Monday", "hours": "5:00 PM - 11:00 PM" },
+        { "day": "Tuesday", "hours": "5:00 PM - 11:00 PM" },
+        { "day": "Wednesday", "hours": "5:00 PM - 11:00 PM" },
+        { "day": "Thursday", "hours": "5:00 PM - 11:00 PM" },
+        { "day": "Friday", "hours": "5:00 PM - 12:00 AM" },
+        { "day": "Saturday", "hours": "4:00 PM - 12:00 AM" },
+        { "day": "Sunday", "hours": "4:00 PM - 10:00 PM" }
+      ],
+      "menu": [
+        {
+          "category": "Appetizers",
+          "items": [
+            { "name": "Bruschetta al Pomodoro", "description": "Toasted bread with fresh tomatoes and basil", "price": "$8" },
+            { "name": "Calamari Fritti", "description": "Crispy fried squid with lemon aioli", "price": "$12" },
+            { "name": "Arancini", "description": "Golden risotto balls with ragù filling", "price": "$10" }
+          ]
+        },
+        {
+          "category": "Main Courses",
+          "items": [
+            { "name": "Osso Buco", "description": "Braised veal shanks with saffron risotto", "price": "$32" },
+            { "name": "Risotto ai Funghi", "description": "Creamy mushroom risotto with truffle oil", "price": "$24" },
+            { "name": "Spaghetti Carbonara", "description": "Classic pasta with pancetta and pecorino", "price": "$18" }
+          ]
+        },
+        {
+          "category": "Desserts",
+          "items": [
+            { "name": "Tiramisu", "description": "Traditional mascarpone and coffee dessert", "price": "$8" },
+            { "name": "Panna Cotta", "description": "Silky cream with berry compote", "price": "$9" }
+          ]
+        }
+      ],
+      "reviews": [
+        {
+          "id": "r1",
+          "author": "John Smith",
+          "avatar": "👨",
+          "rating": 5,
+          "date": "2024-06-15",
+          "comment": "Amazing experience! The pasta was cooked to perfection and the service was excellent."
+        },
+        {
+          "id": "r2",
+          "author": "Maria Garcia",
+          "avatar": "👩",
+          "rating": 5,
+          "date": "2024-06-10",
+          "comment": "Best Italian restaurant in Manhattan. Highly recommend the Osso Buco!"
+        },
+        {
+          "id": "r3",
+          "author": "Michael Chen",
+          "avatar": "👨",
+          "rating": 4,
+          "date": "2024-06-05",
+          "comment": "Great food and atmosphere, but a bit pricey for the portion sizes."
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "name": "Sakura Garden",
+      "cuisine": "Japanese",
+      "location": "Brooklyn, NY",
+      "address": "456 Atlantic Avenue, Brooklyn, NY 11217",
+      "rating": 4.7,
+      "reviewCount": 289,
+      "priceRange": "$$",
+      "phone": "+1 (718) 555-0202",
+      "email": "reservations@sakuragarden.com",
+      "website": "www.sakuragarden.com",
+      "description": "Experience authentic Japanese cuisine prepared by chefs trained in Tokyo. Fresh sushi, sashimi, and traditional cooked dishes.",
+      "image": "/globe.svg",
+      "tags": ["Japanese", "Sushi", "Casual", "Delivery Available"],
+      "capacity": 95,
+      "parkingAvailable": false,
+      "reservationRequired": false,
+      "openNow": true,
+      "hours": [
+        { "day": "Monday", "hours": "Closed" },
+        { "day": "Tuesday", "hours": "11:30 AM - 10:00 PM" },
+        { "day": "Wednesday", "hours": "11:30 AM - 10:00 PM" },
+        { "day": "Thursday", "hours": "11:30 AM - 10:00 PM" },
+        { "day": "Friday", "hours": "11:30 AM - 11:00 PM" },
+        { "day": "Saturday", "hours": "12:00 PM - 11:00 PM" },
+        { "day": "Sunday", "hours": "12:00 PM - 10:00 PM" }
+      ],
+      "menu": [
+        {
+          "category": "Sushi & Sashimi",
+          "items": [
+            { "name": "Spicy Tuna Roll", "description": "Tuna, cucumber, avocado with spicy mayo", "price": "$12" },
+            { "name": "Salmon Sashimi", "description": "5 pieces of fresh Atlantic salmon", "price": "$14" },
+            { "name": "Dragon Roll", "description": "Shrimp tempura, cucumber, avocado topped with eel sauce", "price": "$15" }
+          ]
+        },
+        {
+          "category": "Hot Dishes",
+          "items": [
+            { "name": "Tonkatsu", "description": "Breaded pork cutlet with panko crust", "price": "$18" },
+            { "name": "Teriyaki Chicken", "description": "Glazed chicken with vegetables and rice", "price": "$16" }
+          ]
+        }
+      ],
+      "reviews": [
+        {
+          "id": "r1",
+          "author": "David Lee",
+          "avatar": "👨",
+          "rating": 5,
+          "date": "2024-06-18",
+          "comment": "Freshest sushi in Brooklyn! Love coming here every week."
+        },
+        {
+          "id": "r2",
+          "author": "Sarah Johnson",
+          "avatar": "👩",
+          "rating": 4,
+          "date": "2024-06-12",
+          "comment": "Great quality sushi at reasonable prices. Service was friendly."
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "name": "Spice Route",
+      "cuisine": "Indian",
+      "location": "Queens, NY",
+      "address": "789 Roosevelt Avenue, Queens, NY 11375",
+      "rating": 4.9,
+      "reviewCount": 412,
+      "priceRange": "$$",
+      "phone": "+1 (718) 555-0303",
+      "email": "hello@spiceroute.com",
+      "website": "www.spiceroute.com",
+      "description": "Journey through the flavors of India. Our diverse menu features dishes from North, South, and Eastern regions of India.",
+      "image": "/globe.svg",
+      "tags": ["Indian", "Spicy", "Family-Friendly", "Catering Available"],
+      "capacity": 150,
+      "parkingAvailable": true,
+      "reservationRequired": false,
+      "openNow": true,
+      "hours": [
+        { "day": "Monday", "hours": "11:00 AM - 10:00 PM" },
+        { "day": "Tuesday", "hours": "11:00 AM - 10:00 PM" },
+        { "day": "Wednesday", "hours": "11:00 AM - 10:00 PM" },
+        { "day": "Thursday", "hours": "11:00 AM - 10:00 PM" },
+        { "day": "Friday", "hours": "11:00 AM - 11:00 PM" },
+        { "day": "Saturday", "hours": "11:00 AM - 11:00 PM" },
+        { "day": "Sunday", "hours": "12:00 PM - 10:00 PM" }
+      ],
+      "menu": [
+        {
+          "category": "Curries",
+          "items": [
+            { "name": "Butter Chicken", "description": "Tender chicken in creamy tomato sauce", "price": "$16" },
+            { "name": "Paneer Tikka Masala", "description": "Cottage cheese in aromatic spiced sauce", "price": "$14" },
+            { "name": "Lamb Vindaloo", "description": "Tender lamb in hot and tangy sauce", "price": "$18" }
+          ]
+        },
+        {
+          "category": "Breads",
+          "items": [
+            { "name": "Naan", "description": "Traditional Indian flatbread", "price": "$3" },
+            { "name": "Garlic Naan", "description": "Naan with fresh garlic and herbs", "price": "$4" },
+            { "name": "Paratha", "description": "Layered Indian bread", "price": "$4" }
+          ]
+        }
+      ],
+      "reviews": [
+        {
+          "id": "r1",
+          "author": "Priya Patel",
+          "avatar": "👩",
+          "rating": 5,
+          "date": "2024-06-20",
+          "comment": "Authentic Indian flavors! The best butter chicken I've had in NY."
+        },
+        {
+          "id": "r2",
+          "author": "Raj Kumar",
+          "avatar": "👨",
+          "rating": 5,
+          "date": "2024-06-14",
+          "comment": "Excellent spices and great variety. Perfect for families."
+        },
+        {
+          "id": "r3",
+          "author": "Emily Rodriguez",
+          "avatar": "👩",
+          "rating": 4,
+          "date": "2024-06-08",
+          "comment": "Very good, though I wish they had more vegetarian options."
+        }
+      ]
+    },
+    {
+      "id": "4",
+      "name": "The Steakhouse",
+      "cuisine": "American",
+      "location": "Bronx, NY",
+      "address": "321 Grand Concourse, Bronx, NY 10451",
+      "rating": 4.6,
+      "reviewCount": 256,
+      "priceRange": "$$$$",
+      "phone": "+1 (718) 555-0404",
+      "email": "bookings@thesteakhouse.com",
+      "website": "www.thesteakhouse.com",
+      "description": "Premium dry-aged steaks and classic American cuisine. Elegant ambiance perfect for special occasions.",
+      "image": "/globe.svg",
+      "tags": ["American", "Steakhouse", "Business Dining", "Private Events"],
+      "capacity": 200,
+      "parkingAvailable": true,
+      "reservationRequired": true,
+      "openNow": false,
+      "hours": [
+        { "day": "Monday", "hours": "Closed" },
+        { "day": "Tuesday", "hours": "5:00 PM - 11:00 PM" },
+        { "day": "Wednesday", "hours": "5:00 PM - 11:00 PM" },
+        { "day": "Thursday", "hours": "5:00 PM - 11:00 PM" },
+        { "day": "Friday", "hours": "5:00 PM - 12:00 AM" },
+        { "day": "Saturday", "hours": "4:00 PM - 12:00 AM" },
+        { "day": "Sunday", "hours": "4:00 PM - 10:00 PM" }
+      ],
+      "menu": [
+        {
+          "category": "Steaks",
+          "items": [
+            { "name": "Ribeye 16oz", "description": "Premium dry-aged ribeye with compound butter", "price": "$48" },
+            { "name": "Filet Mignon 10oz", "description": "Tender center cut with truffle jus", "price": "$52" },
+            { "name": "NY Strip 14oz", "description": "Classic strip steak with garlic mashed potatoes", "price": "$44" }
+          ]
+        },
+        {
+          "category": "Sides",
+          "items": [
+            { "name": "Truffle Mac & Cheese", "description": "Creamy pasta with shaved truffle", "price": "$12" },
+            { "name": "Garlic Mashed Potatoes", "description": "Creamy with roasted garlic", "price": "$8" }
+          ]
+        }
+      ],
+      "reviews": [
+        {
+          "id": "r1",
+          "author": "Thomas Anderson",
+          "avatar": "👨",
+          "rating": 5,
+          "date": "2024-06-19",
+          "comment": "Best steaks in town! Perfect for a romantic dinner."
+        },
+        {
+          "id": "r2",
+          "author": "Lisa White",
+          "avatar": "👩",
+          "rating": 4,
+          "date": "2024-06-11",
+          "comment": "Excellent quality steaks but service was a bit slow."
+        }
+      ]
+    },
+    {
+      "id": "5",
+      "name": "Dragon Palace",
+      "cuisine": "Chinese",
+      "location": "Chinatown, NY",
+      "address": "567 Mott Street, Manhattan, NY 10013",
+      "rating": 4.5,
+      "reviewCount": 198,
+      "priceRange": "$$",
+      "phone": "+1 (212) 555-0505",
+      "email": "info@dragonpalace.com",
+      "website": "www.dragonpalace.com",
+      "description": "Traditional Cantonese and Sichuan cuisine. Famous for our dim sum and hand-pulled noodles.",
+      "image": "/globe.svg",
+      "tags": ["Chinese", "Dim Sum", "Casual", "Lunch Special"],
+      "capacity": 130,
+      "parkingAvailable": false,
+      "reservationRequired": false,
+      "openNow": true,
+      "hours": [
+        { "day": "Monday", "hours": "10:00 AM - 10:00 PM" },
+        { "day": "Tuesday", "hours": "10:00 AM - 10:00 PM" },
+        { "day": "Wednesday", "hours": "10:00 AM - 10:00 PM" },
+        { "day": "Thursday", "hours": "10:00 AM - 10:00 PM" },
+        { "day": "Friday", "hours": "10:00 AM - 11:00 PM" },
+        { "day": "Saturday", "hours": "10:00 AM - 11:00 PM" },
+        { "day": "Sunday", "hours": "10:00 AM - 10:00 PM" }
+      ],
+      "menu": [
+        {
+          "category": "Dim Sum",
+          "items": [
+            { "name": "Shrimp Dumpling", "description": "Steamed shrimp and bamboo shoots", "price": "$5" },
+            { "name": "Siu Mai", "description": "Pork and shrimp dumpling", "price": "$5" },
+            { "name": "Har Gow", "description": "Crystal shrimp dumplings", "price": "$6" }
+          ]
+        },
+        {
+          "category": "Noodles",
+          "items": [
+            { "name": "Hand-Pulled Noodles with Lamb", "description": "Chewy noodles with tender lamb", "price": "$14" },
+            { "name": "Singapore Mei Fun", "description": "Thin rice noodles with shrimp and pork", "price": "$13" }
+          ]
+        }
+      ],
+      "reviews": [
+        {
+          "id": "r1",
+          "author": "Wei Chen",
+          "avatar": "👨",
+          "rating": 5,
+          "date": "2024-06-17",
+          "comment": "Best dim sum in Chinatown! Always fresh and delicious."
+        },
+        {
+          "id": "r2",
+          "author": "Lisa Wong",
+          "avatar": "👩",
+          "rating": 4,
+          "date": "2024-06-09",
+          "comment": "Great selection and authentic taste. A bit noisy during peak hours."
+        }
+      ]
+    },
+    {
+      "id": "6",
+      "name": "Casa Mexico",
+      "cuisine": "Mexican",
+      "location": "Harlem, NY",
+      "address": "234 W 125th Street, Manhattan, NY 10027",
+      "rating": 4.7,
+      "reviewCount": 324,
+      "priceRange": "$",
+      "phone": "+1 (212) 555-0606",
+      "email": "contact@casamexico.com",
+      "website": "www.casamexico.com",
+      "description": "Authentic Mexican cuisine with recipes passed down through generations. Fresh ingredients and traditional preparation.",
+      "image": "/globe.svg",
+      "tags": ["Mexican", "Family-Friendly", "Budget-Friendly", "Happy Hour"],
+      "capacity": 110,
+      "parkingAvailable": false,
+      "reservationRequired": false,
+      "openNow": true,
+      "hours": [
+        { "day": "Monday", "hours": "11:00 AM - 10:00 PM" },
+        { "day": "Tuesday", "hours": "11:00 AM - 10:00 PM" },
+        { "day": "Wednesday", "hours": "11:00 AM - 10:00 PM" },
+        { "day": "Thursday", "hours": "11:00 AM - 10:00 PM" },
+        { "day": "Friday", "hours": "11:00 AM - 11:00 PM" },
+        { "day": "Saturday", "hours": "11:00 AM - 11:00 PM" },
+        { "day": "Sunday", "hours": "11:00 AM - 9:00 PM" }
+      ],
+      "menu": [
+        {
+          "category": "Enchiladas",
+          "items": [
+            { "name": "Enchiladas Verdes", "description": "Filled with chicken and smothered in green sauce", "price": "$12" },
+            { "name": "Enchiladas Roja", "description": "Filled with cheese and topped with red sauce", "price": "$11" }
+          ]
+        },
+        {
+          "category": "Tacos",
+          "items": [
+            { "name": "Al Pastor Tacos", "description": "Marinated pork with pineapple (3 tacos)", "price": "$10" },
+            { "name": "Fish Tacos", "description": "Grilled fish with cabbage slaw (3 tacos)", "price": "$11" }
+          ]
+        }
+      ],
+      "reviews": [
+        {
+          "id": "r1",
+          "author": "Carlos Mendez",
+          "avatar": "👨",
+          "rating": 5,
+          "date": "2024-06-21",
+          "comment": "Tastes like home! Authentic Mexican flavors at great prices."
+        },
+        {
+          "id": "r2",
+          "author": "Sofia Lopez",
+          "avatar": "👩",
+          "rating": 5,
+          "date": "2024-06-13",
+          "comment": "Always busy but worth the wait. Fresh ingredients throughout."
+        },
+        {
+          "id": "r3",
+          "author": "James Martinez",
+          "avatar": "👨",
+          "rating": 4,
+          "date": "2024-06-06",
+          "comment": "Great food and service. Perfect for families."
+        }
+      ]
+    }
+  ]
+}
