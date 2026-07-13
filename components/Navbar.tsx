@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import navLinks from "./navLinks";
+import UserProfile from "./UserProfile";
 
 const Navbar = () => {
   const pathname = usePathname();
@@ -36,20 +37,9 @@ const Navbar = () => {
             ))}
           </nav>
 
-          {/* Auth Buttons */}
+          {/* Auth Buttons or User Profile */}
           <div className="hidden md:flex items-center gap-3">
-            <Link
-              href="/login"
-              className="text-sm font-medium text-gray-700 hover:text-orange-500 transition-colors"
-            >
-              Login
-            </Link>
-            <Link
-              href="/register"
-              className="text-sm font-medium bg-orange-500 text-white px-4 py-2 rounded-full hover:bg-orange-600 transition-colors"
-            >
-              Sign Up
-            </Link>
+            <UserProfile />
           </div>
 
           {/* Mobile Hamburger */}
@@ -84,21 +74,8 @@ const Navbar = () => {
               {link.label}
             </Link>
           ))}
-          <div className="flex gap-3 pt-2">
-            <Link
-              href="/login"
-              onClick={() => setMenuOpen(false)}
-              className="text-sm font-medium text-gray-700 border border-gray-300 px-4 py-2 rounded-full hover:border-orange-500 hover:text-orange-500 transition-colors"
-            >
-              Login
-            </Link>
-            <Link
-              href="/register"
-              onClick={() => setMenuOpen(false)}
-              className="text-sm font-medium bg-orange-500 text-white px-4 py-2 rounded-full hover:bg-orange-600 transition-colors"
-            >
-              Sign Up
-            </Link>
+          <div className="pt-4 border-t border-gray-100 w-full">
+            <UserProfile onMenuClose={() => setMenuOpen(false)} />
           </div>
         </div>
       )}

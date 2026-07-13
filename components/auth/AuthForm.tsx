@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState, type FormEvent } from "react";
+import { authClient } from "@/lib/auth-client";
 
 type AuthMode = "login" | "register";
 
@@ -32,7 +33,7 @@ const AuthForm = ({ mode }: AuthFormProps) => {
   const actionLink = isRegister ? "/login" : "/register";
   const actionLabel = isRegister ? "Login" : "Sign up";
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setError(null);
     setSuccess(null);
@@ -53,11 +54,46 @@ const AuthForm = ({ mode }: AuthFormProps) => {
     }
 
     setIsSubmitting(true);
-    setTimeout(() => {
+    try {
+      if (isRegister) {
+        const res = await authClient.signUp.email({
+          email,
+          password,
+          name,
+        });
+        
+        if (res.error) {
+          setError((res.error as any).message || "Sign up failed");
+          setIsSubmitting(false);
+          return;
+        }
+        
+        setSuccess("Account created successfully!");
+        setTimeout(() => {
+          router.push("/login");
+        }, 1000);
+      } else {
+        const res = await authClient.signIn.email({
+          email,
+          password,
+        });
+        
+        if (res.error) {
+          setError((res.error as any).message || "Login failed");
+          setIsSubmitting(false);
+          return;
+        }
+        
+        setSuccess("Logged in successfully!");
+        setTimeout(() => {
+          router.push("/restaurants");
+        }, 1000);
+      }
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "An error occurred");
+    } finally {
       setIsSubmitting(false);
-      setSuccess(isRegister ? "Account created successfully!" : "Logged in successfully!");
-      router.push("/restaurants");
-    }, 900);
+    }
   };
 
   return (

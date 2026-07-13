@@ -10,6 +10,7 @@ type AddRestaurantFormData = {
   phone: string;
   email: string;
   website: string;
+  imageLinks: string[];
   priceRange: string;
   capacity: string;
   description: string;
@@ -23,6 +24,7 @@ const initialForm: AddRestaurantFormData = {
   phone: "",
   email: "",
   website: "",
+  imageLinks: [""],
   priceRange: "$$",
   capacity: "",
   description: "",
@@ -34,8 +36,27 @@ const AddRestaurantForm = () => {
   const [success, setSuccess] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleChange = (field: keyof AddRestaurantFormData, value: string) => {
+  const handleChange = (field: Exclude<keyof AddRestaurantFormData, "imageLinks">, value: string) => {
     setForm((current) => ({ ...current, [field]: value }));
+  };
+
+  const handleImageLinkChange = (index: number, value: string) => {
+    setForm((current) => {
+      const nextLinks = [...current.imageLinks];
+      nextLinks[index] = value;
+      return { ...current, imageLinks: nextLinks };
+    });
+  };
+
+  const addImageLink = () => {
+    setForm((current) => ({ ...current, imageLinks: [...current.imageLinks, ""] }));
+  };
+
+  const removeImageLink = (index: number) => {
+    setForm((current) => ({
+      ...current,
+      imageLinks: current.imageLinks.filter((_, i) => i !== index),
+    }));
   };
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
@@ -142,6 +163,40 @@ const AddRestaurantForm = () => {
               placeholder="www.restaurant.com"
             />
           </label>
+
+          <div className="space-y-4">
+            <div className="flex items-center justify-between gap-4">
+              <span className="text-sm font-medium text-slate-700">Image URLs</span>
+              <button
+                type="button"
+                onClick={addImageLink}
+                className="rounded-full bg-orange-50 px-4 py-2 text-xs font-semibold text-orange-600 transition hover:bg-orange-100"
+              >
+                Add another
+              </button>
+            </div>
+            <div className="space-y-3">
+              {form.imageLinks.map((link, index) => (
+                <div key={index} className="flex items-center gap-3">
+                  <input
+                    value={link}
+                    onChange={(event) => handleImageLinkChange(index, event.target.value)}
+                    className="flex-1 rounded-3xl border border-gray-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 outline-none transition focus:border-orange-400 focus:bg-white"
+                    placeholder="https://example.com/restaurant-photo.jpg"
+                  />
+                  {form.imageLinks.length > 1 && (
+                    <button
+                      type="button"
+                      onClick={() => removeImageLink(index)}
+                      className="rounded-full bg-gray-100 px-3 py-2 text-xs text-slate-600 transition hover:bg-gray-200"
+                    >
+                      Remove
+                    </button>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
 
           <label className="space-y-2 text-sm text-slate-700">
             Price range

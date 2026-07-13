@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 const OurMission = () => {
   return (
     <section className="py-16 bg-white">
@@ -5,8 +7,13 @@ const OurMission = () => {
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Visual */}
           <div className="relative">
-            <div className="bg-gradient-to-br from-orange-400 to-amber-300 rounded-3xl h-80 flex items-center justify-center shadow-xl">
-              <span className="text-8xl">🍽️</span>
+            <div className="relative overflow-hidden rounded-3xl h-80 shadow-xl">
+              <Image
+                src="/hero1.jpg"
+                alt="Our mission to connect diners with restaurants"
+                fill
+                className="object-cover"
+              />
             </div>
             <div className="absolute -bottom-4 -right-4 bg-white rounded-2xl shadow-lg p-4 flex items-center gap-3">
               <span className="text-3xl">🚀</span>
