@@ -61,9 +61,12 @@ const RestaurantsList = ({ initialData }: Props) => {
   const [price, setPrice]       = useState("All");
   const [openOnly, setOpenOnly] = useState(false);
   const [sort, setSort]         = useState<SortOption>("Top Rated");
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 12;
 
   const clearFilters = () => {
     setSearch(""); setCuisine("All"); setPrice("All"); setOpenOnly(false); setSort("Top Rated");
+    setCurrentPage(1);
   };
 
   const filtered = useMemo(() => {
@@ -80,6 +83,15 @@ const RestaurantsList = ({ initialData }: Props) => {
     if (sort === "Name A–Z")      list = [...list].sort((a, b) => a.name.localeCompare(b.name));
     return list;
   }, [data, search, cuisine, price, openOnly, sort]);
+
+  const totalPages = Math.ceil(filtered.length / itemsPerPage);
+  const startIdx = (currentPage - 1) * itemsPerPage;
+  const paginatedData = filtered.slice(startIdx, startIdx + itemsPerPage);
+
+  // Reset to page 1 when filters change
+  useMemo(() => {
+    setCurrentPage(1);
+  }, [search, cuisine, price, openOnly, sort]);
 
   return (
     <section className="py-10 bg-gray-50">
@@ -133,9 +145,45 @@ const RestaurantsList = ({ initialData }: Props) => {
             </p>
 
             {filtered.length > 0 ? (
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-                {filtered.map((r) => <RestaurantCard key={r.id} r={r} />)}
-              </div>
+              <>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-8">
+                  {paginatedData.map((r) => <RestaurantCard key={r.id} r={r} />)}
+                </div>
+
+                {totalPages > 1 && (
+                  <div className="flex items-center justify-center gap-2">
+                    <button
+                      onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
+                      disabled={currentPage === 1}
+                      className="px-3 py-2 text-sm font-medium border border-gray-200 rounded-lg hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                    >
+                      ← Previous
+                    </button>
+
+                    {Array.from({ length: totalPages }).map((_, i) => (
+                      <button
+                        key={i + 1}
+                        onClick={() => setCurrentPage(i + 1)}
+                        className={`w-10 h-10 text-sm font-medium rounded-lg transition-colors ${
+                          currentPage === i + 1
+                            ? "bg-orange-500 text-white"
+                            : "border border-gray-200 hover:bg-gray-50"
+                        }`}
+                      >
+                        {i + 1}
+                      </button>
+                    ))}
+
+                    <button
+                      onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
+                      disabled={currentPage === totalPages}
+                      className="px-3 py-2 text-sm font-medium border border-gray-200 rounded-lg hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                    >
+                      Next →
+                    </button>
+                  </div>
+                )}
+              </>
             ) : (
               <div className="text-center py-20">
                 <span className="text-6xl block mb-4">🍽️</span>
