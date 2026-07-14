@@ -416,5 +416,431 @@
         }
       ]
     }
+    ,{
+      "id": "7",
+      "name": "Olive & Vine",
+      "cuisine": "Mediterranean",
+      "location": "Upper East, NY",
+      "address": "88 Lexington Avenue, Manhattan, NY 10016",
+      "rating": 4.6,
+      "reviewCount": 154,
+      "priceRange": "$$",
+      "phone": "+1 (212) 555-0707",
+      "email": "info@oliveandvine.com",
+      "website": "www.oliveandvine.com",
+      "description": "A warm Mediterranean escape in the heart of Manhattan. Think mezze platters, fresh seafood, and wood-fired lamb with herbs and olive oil from Greece.",
+      "image": "/globe.svg",
+      "tags": ["Mediterranean", "Seafood", "Wine Bar", "Vegetarian Friendly"],
+      "capacity": 90,
+      "parkingAvailable": false,
+      "reservationRequired": true,
+      "openNow": true,
+      "hours": [
+        { "day": "Monday", "hours": "12:00 PM - 10:00 PM" },
+        { "day": "Tuesday", "hours": "12:00 PM - 10:00 PM" },
+        { "day": "Wednesday", "hours": "12:00 PM - 10:00 PM" },
+        { "day": "Thursday", "hours": "12:00 PM - 11:00 PM" },
+        { "day": "Friday", "hours": "12:00 PM - 11:30 PM" },
+        { "day": "Saturday", "hours": "11:00 AM - 11:30 PM" },
+        { "day": "Sunday", "hours": "11:00 AM - 9:00 PM" }
+      ],
+      "menu": [
+        {
+          "category": "Mezze",
+          "items": [
+            { "name": "Hummus & Pita", "description": "House-made hummus with warm pita bread", "price": "$9" },
+            { "name": "Spanakopita", "description": "Crispy filo pastry with spinach and feta", "price": "$10" },
+            { "name": "Grilled Halloumi", "description": "Cypriot cheese with lemon and herbs", "price": "$12" }
+          ]
+        },
+        {
+          "category": "Mains",
+          "items": [
+            { "name": "Lamb Souvlaki", "description": "Skewered lamb with tzatziki and rice", "price": "$24" },
+            { "name": "Grilled Sea Bass", "description": "Whole sea bass with capers and olive oil", "price": "$30" },
+            { "name": "Moussaka", "description": "Layered eggplant and spiced lamb with béchamel", "price": "$22" }
+          ]
+        }
+      ],
+      "reviews": [
+        {
+          "id": "r1",
+          "author": "Nikos Papadopoulos",
+          "avatar": "NP",
+          "rating": 5,
+          "date": "June 2026",
+          "comment": "Transported me back to Santorini. The lamb souvlaki is unbeatable."
+        },
+        {
+          "id": "r2",
+          "author": "Rachel Kim",
+          "avatar": "RK",
+          "rating": 4,
+          "date": "May 2026",
+          "comment": "Lovely atmosphere and great wine selection. The mezze platter is a must."
+        }
+      ]
+    },
+    {
+      "id": "8",
+      "name": "Bangkok Bites",
+      "cuisine": "Thai",
+      "location": "Midtown, NY",
+      "address": "55 West 46th Street, Manhattan, NY 10036",
+      "rating": 4.4,
+      "reviewCount": 198,
+      "priceRange": "$$",
+      "phone": "+1 (212) 555-0808",
+      "email": "hello@bangkokbites.com",
+      "website": "www.bangkokbites.com",
+      "description": "Vibrant Thai street food meets refined Midtown dining. Our chefs import spices directly from Bangkok's floating markets.",
+      "image": "/globe.svg",
+      "tags": ["Thai", "Spicy", "Lunch Special", "Takeout"],
+      "capacity": 75,
+      "parkingAvailable": false,
+      "reservationRequired": false,
+      "openNow": true,
+      "hours": [
+        { "day": "Monday", "hours": "11:30 AM - 10:00 PM" },
+        { "day": "Tuesday", "hours": "11:30 AM - 10:00 PM" },
+        { "day": "Wednesday", "hours": "11:30 AM - 10:00 PM" },
+        { "day": "Thursday", "hours": "11:30 AM - 10:00 PM" },
+        { "day": "Friday", "hours": "11:30 AM - 11:00 PM" },
+        { "day": "Saturday", "hours": "12:00 PM - 11:00 PM" },
+        { "day": "Sunday", "hours": "12:00 PM - 9:00 PM" }
+      ],
+      "menu": [
+        {
+          "category": "Starters",
+          "items": [
+            { "name": "Spring Rolls", "description": "Crispy rolls with glass noodles and vegetables", "price": "$8" },
+            { "name": "Tom Yum Soup", "description": "Spicy and sour prawn soup with lemongrass", "price": "$11" }
+          ]
+        },
+        {
+          "category": "Mains",
+          "items": [
+            { "name": "Pad Thai", "description": "Stir-fried rice noodles with shrimp, peanuts, and tamarind", "price": "$16" },
+            { "name": "Green Curry", "description": "Thai green curry with chicken and jasmine rice", "price": "$17" },
+            { "name": "Massaman Curry", "description": "Rich peanut curry with beef and potatoes", "price": "$18" }
+          ]
+        }
+      ],
+      "reviews": [
+        {
+          "id": "r1",
+          "author": "Chanida Thongchai",
+          "avatar": "CT",
+          "rating": 5,
+          "date": "July 2026",
+          "comment": "As a Thai native, this feels authentic. The green curry is spot on."
+        },
+        {
+          "id": "r2",
+          "author": "Ben Foster",
+          "avatar": "BF",
+          "rating": 4,
+          "date": "June 2026",
+          "comment": "Great lunch spot near Times Square. Quick service and flavorful food."
+        }
+      ]
+    },
+    {
+      "id": "9",
+      "name": "Le Petit Bistro",
+      "cuisine": "French",
+      "location": "SoHo, NY",
+      "address": "22 Prince Street, Manhattan, NY 10012",
+      "rating": 4.8,
+      "reviewCount": 267,
+      "priceRange": "$$$$",
+      "phone": "+1 (212) 555-0909",
+      "email": "bonjour@lepetitbistro.com",
+      "website": "www.lepetitbistro.com",
+      "description": "Classic French bistro cuisine in the charming streets of SoHo. Inspired by the brasseries of Lyon and Paris, with an ever-changing seasonal menu.",
+      "image": "/globe.svg",
+      "tags": ["French", "Fine Dining", "Romantic", "Wine List"],
+      "capacity": 60,
+      "parkingAvailable": false,
+      "reservationRequired": true,
+      "openNow": true,
+      "hours": [
+        { "day": "Monday", "hours": "Closed" },
+        { "day": "Tuesday", "hours": "6:00 PM - 10:30 PM" },
+        { "day": "Wednesday", "hours": "6:00 PM - 10:30 PM" },
+        { "day": "Thursday", "hours": "6:00 PM - 11:00 PM" },
+        { "day": "Friday", "hours": "6:00 PM - 11:30 PM" },
+        { "day": "Saturday", "hours": "5:30 PM - 11:30 PM" },
+        { "day": "Sunday", "hours": "5:30 PM - 10:00 PM" }
+      ],
+      "menu": [
+        {
+          "category": "Entrées",
+          "items": [
+            { "name": "Soupe à l'Oignon", "description": "Classic French onion soup with Gruyère crouton", "price": "$14" },
+            { "name": "Escargots de Bourgogne", "description": "Burgundy snails with garlic parsley butter", "price": "$18" }
+          ]
+        },
+        {
+          "category": "Plats",
+          "items": [
+            { "name": "Duck Confit", "description": "Slow-cooked duck leg with lentils and Dijon jus", "price": "$38" },
+            { "name": "Sole Meunière", "description": "Pan-fried Dover sole with brown butter and lemon", "price": "$42" },
+            { "name": "Steak Frites", "description": "Hanger steak with hand-cut fries and béarnaise", "price": "$36" }
+          ]
+        },
+        {
+          "category": "Desserts",
+          "items": [
+            { "name": "Crème Brûlée", "description": "Classic vanilla custard with caramelized sugar", "price": "$12" },
+            { "name": "Tarte Tatin", "description": "Upside-down caramelized apple tart with crème fraîche", "price": "$13" }
+          ]
+        }
+      ],
+      "reviews": [
+        {
+          "id": "r1",
+          "author": "Isabelle Dupont",
+          "avatar": "ID",
+          "rating": 5,
+          "date": "July 2026",
+          "comment": "As French as it gets in New York. The duck confit rivals anything in Paris."
+        },
+        {
+          "id": "r2",
+          "author": "Henry Marsh",
+          "avatar": "HM",
+          "rating": 5,
+          "date": "June 2026",
+          "comment": "Took my wife for her birthday — perfect evening. Impeccable service."
+        },
+        {
+          "id": "r3",
+          "author": "Anna Kowalski",
+          "avatar": "AK",
+          "rating": 4,
+          "date": "May 2026",
+          "comment": "Beautiful food and excellent wine list. Slightly small portions for the price."
+        }
+      ]
+    },
+    {
+      "id": "10",
+      "name": "Burger Republic",
+      "cuisine": "American",
+      "location": "Downtown, NY",
+      "address": "180 Fulton Street, Manhattan, NY 10007",
+      "rating": 4.3,
+      "reviewCount": 512,
+      "priceRange": "$",
+      "phone": "+1 (212) 555-1010",
+      "email": "hi@burgerrepublic.com",
+      "website": "www.burgerrepublic.com",
+      "description": "Smashed patties, fresh-baked buns, and craft sauces. We take burgers seriously — premium beef, hand-cut fries, and over 20 topping combinations.",
+      "image": "/globe.svg",
+      "tags": ["American", "Burgers", "Casual", "Late Night"],
+      "capacity": 100,
+      "parkingAvailable": false,
+      "reservationRequired": false,
+      "openNow": true,
+      "hours": [
+        { "day": "Monday", "hours": "11:00 AM - 11:00 PM" },
+        { "day": "Tuesday", "hours": "11:00 AM - 11:00 PM" },
+        { "day": "Wednesday", "hours": "11:00 AM - 11:00 PM" },
+        { "day": "Thursday", "hours": "11:00 AM - 11:00 PM" },
+        { "day": "Friday", "hours": "11:00 AM - 1:00 AM" },
+        { "day": "Saturday", "hours": "11:00 AM - 1:00 AM" },
+        { "day": "Sunday", "hours": "12:00 PM - 10:00 PM" }
+      ],
+      "menu": [
+        {
+          "category": "Burgers",
+          "items": [
+            { "name": "Classic Smash", "description": "Double smash patty, American cheese, pickles, special sauce", "price": "$13" },
+            { "name": "Bacon BBQ Melt", "description": "Crispy bacon, cheddar, caramelized onions, BBQ sauce", "price": "$15" },
+            { "name": "Mushroom Swiss", "description": "Sautéed mushrooms, Swiss cheese, garlic aioli", "price": "$14" }
+          ]
+        },
+        {
+          "category": "Sides",
+          "items": [
+            { "name": "Hand-Cut Fries", "description": "Golden fries with sea salt", "price": "$5" },
+            { "name": "Onion Rings", "description": "Beer-battered onion rings", "price": "$6" },
+            { "name": "Milkshake", "description": "Vanilla, chocolate, or strawberry", "price": "$7" }
+          ]
+        }
+      ],
+      "reviews": [
+        {
+          "id": "r1",
+          "author": "Jake Turner",
+          "avatar": "JT",
+          "rating": 5,
+          "date": "July 2026",
+          "comment": "Best smash burger in Manhattan. Period. The special sauce is addictive."
+        },
+        {
+          "id": "r2",
+          "author": "Mia Collins",
+          "avatar": "MC",
+          "rating": 4,
+          "date": "June 2026",
+          "comment": "Always reliable. Great for a quick lunch downtown."
+        },
+        {
+          "id": "r3",
+          "author": "Darius Hayes",
+          "avatar": "DH",
+          "rating": 4,
+          "date": "June 2026",
+          "comment": "Solid burgers and the onion rings are fantastic."
+        }
+      ]
+    },
+    {
+      "id": "11",
+      "name": "Tandoor Nights",
+      "cuisine": "Indian",
+      "location": "Jersey City, NJ",
+      "address": "77 Newark Avenue, Jersey City, NJ 07302",
+      "rating": 4.7,
+      "reviewCount": 388,
+      "priceRange": "$$",
+      "phone": "+1 (201) 555-1111",
+      "email": "reservations@tandoornights.com",
+      "website": "www.tandoornights.com",
+      "description": "Upscale North Indian cuisine with a focus on tandoor-fired breads and clay-pot curries. Known for our whole roasted chicken and award-winning biryani.",
+      "image": "/globe.svg",
+      "tags": ["Indian", "Tandoor", "Biryani", "Fine Dining"],
+      "capacity": 120,
+      "parkingAvailable": true,
+      "reservationRequired": true,
+      "openNow": false,
+      "hours": [
+        { "day": "Monday", "hours": "Closed" },
+        { "day": "Tuesday", "hours": "5:00 PM - 10:30 PM" },
+        { "day": "Wednesday", "hours": "5:00 PM - 10:30 PM" },
+        { "day": "Thursday", "hours": "5:00 PM - 10:30 PM" },
+        { "day": "Friday", "hours": "5:00 PM - 11:30 PM" },
+        { "day": "Saturday", "hours": "12:00 PM - 11:30 PM" },
+        { "day": "Sunday", "hours": "12:00 PM - 10:00 PM" }
+      ],
+      "menu": [
+        {
+          "category": "Tandoor Specialties",
+          "items": [
+            { "name": "Chicken Tikka", "description": "Marinated chicken roasted in clay oven", "price": "$18" },
+            { "name": "Seekh Kebab", "description": "Spiced minced lamb skewers", "price": "$20" },
+            { "name": "Tandoori Naan", "description": "Freshly baked leavened bread", "price": "$4" }
+          ]
+        },
+        {
+          "category": "Curries & Biryani",
+          "items": [
+            { "name": "Rogan Josh", "description": "Kashmiri slow-cooked lamb curry", "price": "$22" },
+            { "name": "Chicken Biryani", "description": "Fragrant basmati rice with spiced chicken", "price": "$20" },
+            { "name": "Dal Makhani", "description": "Slow-cooked black lentils in butter and cream", "price": "$16" }
+          ]
+        }
+      ],
+      "reviews": [
+        {
+          "id": "r1",
+          "author": "Arjun Mehta",
+          "avatar": "AM",
+          "rating": 5,
+          "date": "July 2026",
+          "comment": "The biryani alone is worth the trip across the river. Exceptional."
+        },
+        {
+          "id": "r2",
+          "author": "Lisa Park",
+          "avatar": "LP",
+          "rating": 5,
+          "date": "June 2026",
+          "comment": "Best Indian food in the area by far. The seekh kebabs are incredible."
+        },
+        {
+          "id": "r3",
+          "author": "Omar Farooq",
+          "avatar": "OF",
+          "rating": 4,
+          "date": "May 2026",
+          "comment": "Authentic flavors, generous portions. Slightly slow on weekends."
+        }
+      ]
+    },
+    {
+      "id": "12",
+      "name": "Sushi Zen",
+      "cuisine": "Japanese",
+      "location": "Tribeca, NY",
+      "address": "14 Hudson Street, Manhattan, NY 10013",
+      "rating": 4.9,
+      "reviewCount": 223,
+      "priceRange": "$$$",
+      "phone": "+1 (212) 555-1212",
+      "email": "omakase@sushizen.com",
+      "website": "www.sushizen.com",
+      "description": "A minimalist sushi counter experience in Tribeca. We serve omakase-only, sourcing fish daily from Tokyo's Toyosu market and sustainable local waters.",
+      "image": "/globe.svg",
+      "tags": ["Japanese", "Omakase", "Sushi", "Intimate"],
+      "capacity": 20,
+      "parkingAvailable": false,
+      "reservationRequired": true,
+      "openNow": true,
+      "hours": [
+        { "day": "Monday", "hours": "Closed" },
+        { "day": "Tuesday", "hours": "Closed" },
+        { "day": "Wednesday", "hours": "6:00 PM - 10:00 PM" },
+        { "day": "Thursday", "hours": "6:00 PM - 10:00 PM" },
+        { "day": "Friday", "hours": "6:00 PM - 10:30 PM" },
+        { "day": "Saturday", "hours": "5:30 PM - 10:30 PM" },
+        { "day": "Sunday", "hours": "5:30 PM - 9:30 PM" }
+      ],
+      "menu": [
+        {
+          "category": "Omakase",
+          "items": [
+            { "name": "Standard Omakase (15 courses)", "description": "Seasonal selection of nigiri, sashimi, and small plates", "price": "$150" },
+            { "name": "Premium Omakase (20 courses)", "description": "Extended tasting with premium toro, uni, and wagyu", "price": "$220" }
+          ]
+        },
+        {
+          "category": "À La Carte",
+          "items": [
+            { "name": "Otoro Nigiri", "description": "2 pieces of fatty bluefin tuna", "price": "$28" },
+            { "name": "Uni Gunkan", "description": "Sea urchin on sushi rice", "price": "$22" },
+            { "name": "Wagyu Tataki", "description": "Lightly seared A5 wagyu with ponzu", "price": "$35" }
+          ]
+        }
+      ],
+      "reviews": [
+        {
+          "id": "r1",
+          "author": "Kenji Watanabe",
+          "avatar": "KW",
+          "rating": 5,
+          "date": "July 2026",
+          "comment": "A once-in-a-lifetime experience every single visit. The chef's skill is extraordinary."
+        },
+        {
+          "id": "r2",
+          "author": "Claire Fontaine",
+          "avatar": "CF",
+          "rating": 5,
+          "date": "June 2026",
+          "comment": "The best sushi I've ever had. Every piece is a masterwork."
+        },
+        {
+          "id": "r3",
+          "author": "Raj Patel",
+          "avatar": "RP",
+          "rating": 5,
+          "date": "May 2026",
+          "comment": "Worth every penny. Book months in advance — it sells out fast."
+        }
+      ]
+    }
   ]
 }

@@ -7,9 +7,18 @@ const RestaurantDetailHero = ({ restaurant }: Props) => {
   return (
     <section className="pt-16">
       {/* Banner */}
-      <div className="relative h-64 sm:h-80 bg-gradient-to-br from-orange-400 to-amber-300 flex items-center justify-center">
-        <span className="text-8xl opacity-30">🍽️</span>
-        <div className="absolute inset-0 bg-black/20" />
+      <div className="relative h-64 sm:h-80 bg-gradient-to-br from-orange-400 to-amber-300 flex items-center justify-center overflow-hidden">
+        {restaurant.imageUrls?.[0] ? (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            src={restaurant.imageUrls[0]}
+            alt={restaurant.name}
+            className="absolute inset-0 w-full h-full object-cover"
+          />
+        ) : (
+          <span className="text-8xl opacity-30">🍽️</span>
+        )}
+        <div className="absolute inset-0 bg-black/30" />
         {/* Breadcrumb */}
         <nav className="absolute top-4 left-4 sm:left-8 flex items-center gap-2 text-sm text-white/80">
           <Link href="/" className="hover:text-white transition-colors">Home</Link>

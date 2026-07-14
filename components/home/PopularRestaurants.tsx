@@ -1,33 +1,22 @@
-import Image from "next/image";
 import Link from "next/link";
-import restaurantsData from "@/data/restaurants.json";
+import { fetchRestaurants, type Restaurant } from "@/lib/api";
 
-type Restaurant = {
-  id: string;
-  name: string;
-  image: string;
-  cuisine: string;
-  location: string;
-  rating: number;
-  priceRange: string;
-};
-
-const restaurants: Restaurant[] = restaurantsData.restaurants.map((r: any) => ({
-  id: r.id,
-  name: r.name,
-  image: r.image,
-  cuisine: r.cuisine,
-  location: r.location,
-  rating: r.rating,
-  priceRange: r.priceRange,
-}));
-
-const RestaurantCard = ({ restaurant }: { restaurant: Restaurant }) => (
+const RestaurantCard = ({ restaurant }: { restaurant: Restaurant }) => {
+  const image = restaurant.imageUrls?.[0];
+  return (
   <div className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow border border-gray-100 group">
     <div className="relative h-48 bg-gradient-to-br from-orange-100 to-amber-50 flex items-center justify-center overflow-hidden">
-      <span className="text-6xl">🍴</span>
+      {image ? (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img src={image} alt={restaurant.name} className="w-full h-full object-cover" />
+      ) : (
+        <span className="text-6xl">🍴</span>
+      )}
       <span className="absolute top-3 right-3 bg-white text-orange-500 text-xs font-bold px-2 py-1 rounded-full shadow">
         {restaurant.priceRange}
+      </span>
+      <span className={`absolute top-3 left-3 text-xs font-medium px-2 py-1 rounded-full ${restaurant.openNow ? "bg-green-100 text-green-600" : "bg-gray-100 text-gray-500"}`}>
+        {restaurant.openNow ? "Open Now" : "Closed"}
       </span>
     </div>
     <div className="p-4">
@@ -49,9 +38,14 @@ const RestaurantCard = ({ restaurant }: { restaurant: Restaurant }) => (
       </Link>
     </div>
   </div>
-);
+  );
+};
 
-const PopularRestaurants = () => {
+const PopularRestaurants = async () => {
+  const all = await fetchRestaurants().catch(() => []);
+  // Show top 6 by rating
+  const restaurants = [...all].sort((a, b) => b.rating - a.rating).slice(0, 6);
+
   return (
     <section className="py-16 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -65,11 +59,17 @@ const PopularRestaurants = () => {
           </Link>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {restaurants.map((r) => (
-            <RestaurantCard key={r.id} restaurant={r} />
-          ))}
-        </div>
+        {restaurants.length === 0 ? (
+          <div className="text-center py-12 text-gray-400 text-sm">
+            Could not load restaurants right now.
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {restaurants.map((r) => (
+              <RestaurantCard key={r.id} restaurant={r} />
+            ))}
+          </div>
+        )}
 
         <div className="mt-8 text-center sm:hidden">
           <Link href="/restaurants" className="text-sm font-medium text-orange-500 hover:underline">

@@ -21,10 +21,9 @@ const RestaurantInfo = ({ restaurant }: Props) => {
         <p className="text-gray-500 text-sm leading-relaxed">{restaurant.description}</p>
       </div>
 
-      <div className="grid sm:grid-cols-2 gap-8">
-        {/* Contact & Details */}
-        <div className="bg-gray-50 rounded-2xl p-5 space-y-4">
-          <h3 className="font-semibold text-gray-900">Details</h3>
+      <div className="bg-gray-50 rounded-2xl p-5 space-y-4">
+        <h3 className="font-semibold text-gray-900">Details</h3>
+        <div className="grid sm:grid-cols-2 gap-6">
           <InfoRow icon="📍" label="Address"   value={restaurant.address} />
           <InfoRow icon="📞" label="Phone"     value={restaurant.phone} />
           <InfoRow icon="✉️" label="Email"     value={restaurant.email} />
@@ -32,21 +31,6 @@ const RestaurantInfo = ({ restaurant }: Props) => {
           <InfoRow icon="👥" label="Capacity"  value={`${restaurant.capacity} guests`} />
           <InfoRow icon="🚗" label="Parking"   value={restaurant.parkingAvailable ? "Available" : "Not available"} />
           <InfoRow icon="📅" label="Reservation" value={restaurant.reservationRequired ? "Required" : "Walk-ins welcome"} />
-        </div>
-
-        {/* Opening Hours */}
-        <div className="bg-gray-50 rounded-2xl p-5">
-          <h3 className="font-semibold text-gray-900 mb-4">Opening Hours</h3>
-          <ul className="space-y-2">
-            {restaurant.hours.map(({ day, hours }) => (
-              <li key={day} className="flex items-center justify-between text-sm">
-                <span className="text-gray-500">{day}</span>
-                <span className={`font-medium ${hours === "Closed" ? "text-red-400" : "text-gray-800"}`}>
-                  {hours}
-                </span>
-              </li>
-            ))}
-          </ul>
         </div>
       </div>
     </div>

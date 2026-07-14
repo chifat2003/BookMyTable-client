@@ -17,6 +17,7 @@ const AuthForm = ({ mode }: AuthFormProps) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [role, setRole] = useState<"User" | "Owner">("User");
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -60,7 +61,8 @@ const AuthForm = ({ mode }: AuthFormProps) => {
           email,
           password,
           name,
-        });
+          role,
+        } as any);
         
         if (res.error) {
           setError((res.error as any).message || "Sign up failed");
@@ -151,6 +153,23 @@ const AuthForm = ({ mode }: AuthFormProps) => {
               className="mt-2 w-full rounded-3xl border border-gray-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 outline-none transition focus:border-orange-400 focus:bg-white"
             />
           </div>
+
+          {isRegister && (
+            <div>
+              <label htmlFor="role" className="block text-sm font-medium text-slate-700">
+                Account role
+              </label>
+              <select
+                id="role"
+                value={role}
+                onChange={(event) => setRole(event.target.value as "User" | "Owner")}
+                className="mt-2 w-full rounded-3xl border border-gray-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 outline-none transition focus:border-orange-400 focus:bg-white"
+              >
+                <option value="User">User</option>
+                <option value="Owner">Owner</option>
+              </select>
+            </div>
+          )}
 
           {isRegister && (
             <div>

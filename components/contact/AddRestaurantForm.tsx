@@ -1,6 +1,8 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
+import { authClient } from "@/lib/auth-client";
+import { postRestaurant } from "@/lib/api";
 
 type AddRestaurantFormData = {
   name: string;
@@ -25,12 +27,16 @@ const initialForm: AddRestaurantFormData = {
   email: "",
   website: "",
   imageLinks: [""],
-  priceRange: "$$",
+  priceRange: "",
   capacity: "",
   description: "",
 };
 
 const AddRestaurantForm = () => {
+  const { data: session, isPending } = authClient.useSession();
+  const userRole = (session?.user as any)?.role;
+  const isOwner = userRole === "Owner";
+
   const [form, setForm] = useState<AddRestaurantFormData>(initialForm);
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<string | null>(null);
@@ -59,7 +65,7 @@ const AddRestaurantForm = () => {
     }));
   };
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setError(null);
     setSuccess(null);
@@ -75,12 +81,62 @@ const AddRestaurantForm = () => {
     }
 
     setIsSubmitting(true);
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setSuccess("Your restaurant submission has been received. We will review it and be in touch soon.");
+    try {
+      const payload = {
+        name: form.name,
+        cuisineType: form.cuisine,
+        address: form.address,
+        location: form.location,
+        phone: form.phone,
+        email: form.email,
+        website: form.website || '',
+        imageUrls: Array.isArray(form.imageLinks) ? form.imageLinks.filter(Boolean) : [],
+        priceRange: form.priceRange,
+        capacity: Number(form.capacity) || 0,
+        description: form.description,
+      };
+
+      const res = await postRestaurant(payload);
+
+      setSuccess(res?.message || 'Your restaurant submission has been received.');
       setForm(initialForm);
-    }, 900);
+    } catch (err: any) {
+      setError(err?.message || 'Submission failed');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
+
+  if (isPending) {
+    return (
+      <div className="rounded-[2rem] border border-gray-200 bg-white p-8 shadow-xl shadow-slate-200/40">
+        <p className="text-lg font-semibold text-slate-900">Checking access...</p>
+        <p className="mt-3 text-sm text-slate-500">Please wait while we verify your account.</p>
+      </div>
+    );
+  }
+
+  if (!session) {
+    return (
+      <div className="rounded-[2rem] border border-gray-200 bg-white p-8 shadow-xl shadow-slate-200/40">
+        <p className="text-lg font-semibold text-slate-900">Owner access required</p>
+        <p className="mt-3 text-sm text-slate-500">
+          Only restaurant owners can submit a restaurant. Please log in or sign up with the Owner role to continue.
+        </p>
+      </div>
+    );
+  }
+
+  if (!isOwner) {
+    return (
+      <div className="rounded-[2rem] border border-gray-200 bg-white p-8 shadow-xl shadow-slate-200/40">
+        <p className="text-lg font-semibold text-slate-900">Access denied</p>
+        <p className="mt-3 text-sm text-slate-500">
+          Your account does not have Owner access. Restaurant submission is only available to users with the Owner role.
+        </p>
+      </div>
+    );
+  }
 
   return (
     <div className="rounded-[2rem] border border-gray-200 bg-white p-8 shadow-xl shadow-slate-200/40">
@@ -205,10 +261,11 @@ const AddRestaurantForm = () => {
               onChange={(event) => handleChange("priceRange", event.target.value)}
               className="w-full rounded-3xl border border-gray-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 outline-none transition focus:border-orange-400 focus:bg-white"
             >
-              <option value="$">$</option>
-              <option value="$$">$$</option>
-              <option value="$$$">$$$</option>
-              <option value="$$$$">$$$$</option>
+              <option value="50+">USD 14.99+ </option>
+              <option value="$$">USD 15.00 - $25.00</option>
+              <option value="$$$">USD 25.00 - $50.00</option>
+              <option value="$$$$">USD 50.00 - $100.00</option>
+              <option value="$$$$$">USD 100.00+</option>
             </select>
           </label>
 
