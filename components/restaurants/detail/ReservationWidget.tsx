@@ -16,7 +16,7 @@ const ReservationWidget = ({ restaurant }: Props) => {
   const [guests, setGuests]   = useState("2 Guests");
   const [name, setName]       = useState("");
   const [phone, setPhone]     = useState("");
-  const [email, setEmail]     = useState(session?.user?.email || "");
+  const [email, setEmail]     = useState(session?.user?.email ?? "");
   const [note, setNote]       = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -28,7 +28,7 @@ const ReservationWidget = ({ restaurant }: Props) => {
     setLoading(true);
     try {
       await postReservation({
-        restaurantId: restaurant.id || restaurant._id || "",
+        restaurantId: restaurant.id!,
         name,
         phone,
         email,

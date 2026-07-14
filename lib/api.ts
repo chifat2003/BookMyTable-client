@@ -102,9 +102,7 @@ export type Reservation = {
 // Helpers
 // ---------------------------------------------------------------------------
 
-const BASE_URL = process.env.NEXT_PUBLIC_API_URL
-  ? process.env.NEXT_PUBLIC_API_URL.replace(/\/?$/, "/")
-  : "";
+const BASE_URL = process.env.NEXT_PUBLIC_API_URL!.replace(/\/?$/, "/");
 
 async function handleResponse<T>(res: Response): Promise<T> {
   const text = await res.text();
@@ -173,20 +171,18 @@ export async function fetchRestaurantById(id: string): Promise<RestaurantDetail>
         // Ensure all required fields exist with sensible defaults
         return normalizeId({
           ...doc,
-          tags: doc.tags ?? [],
-          hours: doc.hours ?? [],
-          menu: doc.menu ?? [],
-          reviews: doc.reviews ?? [],
-          rating: doc.rating ?? 0,
-          reviewCount: doc.reviewCount ?? 0,
-          openNow: doc.openNow ?? false,
-          parkingAvailable: doc.parkingAvailable ?? false,
-          reservationRequired: doc.reservationRequired ?? false,
+          tags: doc.tags!,
+          hours: doc.hours!,
+          menu: doc.menu!,
+          reviews: doc.reviews!,
+          rating: doc.rating!,
+          reviewCount: doc.reviewCount!,
+          openNow: doc.openNow!,
+          parkingAvailable: doc.parkingAvailable!,
+          reservationRequired: doc.reservationRequired!,
         } as RestaurantDetail);
       }
     }
-    // Fallback: treat raw as the document directly
-    return normalizeId(raw as RestaurantDetail);
   }
 
   throw new Error(`Unexpected response shape for restaurant ${id}`);
@@ -216,9 +212,9 @@ export async function postReservation(payload: ReservationRequestBody): Promise<
     const data = obj.data as Record<string, unknown>;
     if (data) {
       return {
-        id: (data._id ?? data.id ?? "") as string,
-        status: (data.status ?? "pending") as string,
-        createdAt: (data.createdAt ?? new Date().toISOString()) as string,
+        id: (data._id ?? data.id) as string,
+        status: (data.status) as string,
+        createdAt: (data.createdAt) as string,
       };
     }
   }
