@@ -98,10 +98,10 @@ const AddRestaurantForm = () => {
 
       const res = await postRestaurant(payload);
 
-      setSuccess(res?.message || 'Your restaurant submission has been received.');
+      setSuccess(null);
       setForm(initialForm);
     } catch (err: any) {
-      setError(err?.message || 'Submission failed');
+      setError(err?.message ?? null);
     } finally {
       setIsSubmitting(false);
     }
