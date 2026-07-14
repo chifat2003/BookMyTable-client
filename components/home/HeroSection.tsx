@@ -1,3 +1,6 @@
+import Image from "next/image";
+
+
 const HeroSection = () => {
   return (
     <section className="relative bg-gradient-to-br from-orange-50 to-amber-50 pt-24 pb-16 overflow-hidden">
@@ -56,8 +59,13 @@ const HeroSection = () => {
 
           {/* Hero Image Placeholder */}
           <div className="hidden lg:flex justify-center items-center">
-            <div className="relative w-full max-w-md aspect-square rounded-3xl bg-gradient-to-br from-orange-400 to-amber-300 flex items-center justify-center shadow-2xl">
-              <span className="text-9xl">🍽️</span>
+            <div className="relative w-full max-w-md aspect-4/3 rounded-3xl bg-gradient-to-br from-orange-400 to-amber-300 flex items-center justify-center shadow-2xl">
+              <Image
+                              src="/hero1.jpg"
+                              alt="Our mission to connect diners with restaurants"
+                              fill
+                              className="object-cover rounded-3xl"
+                            />
               {/* Floating card */}
               <div className="absolute -bottom-4 -left-4 bg-white rounded-2xl shadow-lg p-4 flex items-center gap-3">
                 <span className="text-3xl">⭐</span>
