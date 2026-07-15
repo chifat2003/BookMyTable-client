@@ -1,59 +1,90 @@
-import { redirect } from "next/navigation";
-import { cookies } from "next/headers";
+"use client";
+
+import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
+import { authClient } from "@/lib/auth-client";
 import { fetchRestaurants, fetchReservationsByRestaurant } from "@/lib/api";
-import { auth } from "@/lib/auth";
+import type { Restaurant, Reservation } from "@/lib/api";
 
-export const metadata = {
-  title: "Owner Dashboard — BookMyTable",
-  description: "Manage reservations for your restaurants.",
-};
+export default function OwnerDashboardPage() {
+  const { data: session, isPending } = authClient.useSession();
+  const router = useRouter();
+  const [restaurants, setRestaurants] = useState<Restaurant[]>([]);
+  const [reservationsMap, setReservationsMap] = useState<Record<string, Reservation[]>>({});
+  const [loading, setLoading] = useState(true);
 
-export default async function OwnerDashboardPage() {
-  const cookieStore = await cookies();
-  const sessionCookie = cookieStore.get("better-auth.session_token")?.value;
+  useEffect(() => {
+    if (!isPending && !session?.user?.email) {
+      router.push("/login");
+      return;
+    }
 
-  if (!sessionCookie) {
-    redirect("/login");
+    if (session?.user?.email) {
+      fetchRestaurants()
+        .then(async (data) => {
+          setRestaurants(data);
+          // Fetch reservations for each restaurant
+          const reservations: Record<string, Reservation[]> = {};
+          for (const restaurant of data) {
+            const resId = restaurant.id || restaurant._id || "";
+            if (resId) {
+              reservations[resId] = await fetchReservationsByRestaurant(resId).catch(() => []);
+            }
+          }
+          setReservationsMap(reservations);
+        })
+        .catch(() => {
+          setRestaurants([]);
+          setReservationsMap({});
+        })
+        .finally(() => setLoading(false));
+    }
+  }, [session, isPending, router]);
+
+  if (isPending || loading) {
+    return (
+      <main className="min-h-screen bg-gray-50 pt-20 flex items-center justify-center">
+        <div className="text-center">
+          <div className="inline-block w-12 h-12 border-4 border-orange-200 border-t-orange-500 rounded-full animate-spin mb-4"></div>
+          <p className="text-gray-500">Loading restaurants...</p>
+        </div>
+      </main>
+    );
   }
-
-  // Get session from better-auth
-  const session = await auth.api.getSession({
-    headers: {
-      cookie: `better-auth.session_token=${sessionCookie}`,
-    },
-  });
 
   if (!session?.user?.email) {
-    redirect("/login");
+    return null;
   }
 
-  // For now, fetch all restaurants. In a real app, restaurants would have an owner field.
-  const restaurants = await fetchRestaurants().catch(() => []);
-
   return (
-    <main className="min-h-screen bg-gray-50">
+    <main className="min-h-screen bg-gray-50 pt-20">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900">Owner Dashboard</h1>
-          <p className="text-gray-500 mt-1">Manage reservations for your restaurants</p>
+          <h1 className="text-4xl font-bold text-gray-900">Owner Dashboard</h1>
+          <p className="text-gray-500 mt-2">Manage reservations for your restaurants</p>
         </div>
 
         {restaurants.length === 0 ? (
           <div className="bg-white rounded-2xl border border-gray-100 p-12 text-center">
-            <span className="text-5xl block mb-3">🏪</span>
-            <p className="text-gray-500 mb-4">You don't have any restaurants yet.</p>
+            <span className="text-6xl block mb-4">🏪</span>
+            <p className="text-lg font-semibold text-gray-900 mb-2">No restaurants yet</p>
+            <p className="text-gray-500 mb-6">Start by adding your first restaurant!</p>
             <a
               href="/restaurants/new"
-              className="inline-block bg-orange-500 hover:bg-orange-600 text-white font-semibold px-6 py-2.5 rounded-xl transition-colors"
+              className="inline-block bg-orange-500 hover:bg-orange-600 text-white font-semibold px-8 py-3 rounded-xl transition-colors"
             >
               Add a Restaurant
             </a>
           </div>
         ) : (
           <div className="grid gap-8">
-            {restaurants.map((restaurant) => (
-              <RestaurantReservations key={restaurant.id || restaurant._id} restaurant={restaurant} />
-            ))}
+            {restaurants.map((restaurant) => {
+              const restaurantId = restaurant.id || restaurant._id || "";
+              const reservations = reservationsMap[restaurantId] || [];
+              return (
+                <RestaurantReservations key={restaurantId} restaurant={restaurant} reservations={reservations} />
+              );
+            })}
           </div>
         )}
       </div>
@@ -61,10 +92,7 @@ export default async function OwnerDashboardPage() {
   );
 }
 
-async function RestaurantReservations({ restaurant }: { restaurant: any }) {
-  const restaurantId = restaurant.id || restaurant._id;
-  const reservations = await fetchReservationsByRestaurant(restaurantId).catch(() => []);
-
+function RestaurantReservations({ restaurant, reservations }: { restaurant: Restaurant; reservations: Reservation[] }) {
   const statusColors: Record<string, string> = {
     pending: "bg-yellow-100 text-yellow-700",
     confirmed: "bg-green-100 text-green-700",

@@ -1,34 +1,45 @@
-import { redirect } from "next/navigation";
-import { cookies } from "next/headers";
+"use client";
+
+import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
+import { authClient } from "@/lib/auth-client";
 import { fetchReservationsByEmail } from "@/lib/api";
-import { auth } from "@/lib/auth";
 import type { Reservation } from "@/lib/api";
 
-export const metadata = {
-  title: "My Reservations — BookMyTable",
-  description: "View and manage your restaurant reservations.",
-};
+export default function DashboardPage() {
+  const { data: session, isPending } = authClient.useSession();
+  const router = useRouter();
+  const [reservations, setReservations] = useState<Reservation[]>([]);
+  const [loading, setLoading] = useState(true);
 
-export default async function DashboardPage() {
-  const cookieStore = await cookies();
-  const sessionCookie = cookieStore.get("better-auth.session_token")?.value;
+  useEffect(() => {
+    if (!isPending && !session?.user?.email) {
+      router.push("/login");
+      return;
+    }
 
-  if (!sessionCookie) {
-    redirect("/login");
+    if (session?.user?.email) {
+      fetchReservationsByEmail(session.user.email)
+        .then(setReservations)
+        .catch(() => setReservations([]))
+        .finally(() => setLoading(false));
+    }
+  }, [session, isPending, router]);
+
+  if (isPending || loading) {
+    return (
+      <main className="min-h-screen bg-gray-50 pt-20 flex items-center justify-center">
+        <div className="text-center">
+          <div className="inline-block w-12 h-12 border-4 border-orange-200 border-t-orange-500 rounded-full animate-spin mb-4"></div>
+          <p className="text-gray-500">Loading reservations...</p>
+        </div>
+      </main>
+    );
   }
-
-  // Get session from better-auth
-  const session = await auth.api.getSession({
-    headers: {
-      cookie: `better-auth.session_token=${sessionCookie}`,
-    },
-  });
 
   if (!session?.user?.email) {
-    redirect("/login");
+    return null;
   }
-
-  const reservations = await fetchReservationsByEmail(session.user.email).catch(() => []);
 
   return (
     <main className="min-h-screen bg-gray-50 pt-20">
